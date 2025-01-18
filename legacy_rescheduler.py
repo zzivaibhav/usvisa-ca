@@ -4,18 +4,25 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from settings import TEST_MODE
+from settings import TEST_MODE, TIMEOUT
 
 
 # This is frankly very, very bad and should be rewritten with requests
 # when I get a test account
 def legacy_reschedule(driver):
     driver.refresh()
+    timeout = TIMEOUT
+    dropdown = WebDriverWait(driver, timeout).until(EC.visibility_of_element_located(
+            (By.ID, "appointments_consulate_appointment_facility_id")
+        ))
+    dropdown.click()
+    halifax_option = dropdown.find_element(By.XPATH, "/html/body/div[4]/main/div[4]/div/div/form/fieldset/ol/fieldset/div/div[2]/div[1]/div/li/select/option[3]")
+    halifax_option.click()
     date_selection_box = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located(
+        EC.element_to_be_clickable(
             (
                 By.XPATH,
-                "/html/body/div[4]/main/div[4]/div/div/form/fieldset/ol/fieldset/div/div[2]/div[3]/li[1]/input",
+               "/html/body/div[4]/main/div[4]/div/div/form/fieldset/ol/fieldset/div/div[2]/div[3]/li[1]/input",
             )
         )
     )

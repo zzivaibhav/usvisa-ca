@@ -11,6 +11,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
+from fake_useragent import UserAgent
 
 from legacy_rescheduler import legacy_reschedule
 from request_tracker import RequestTracker
@@ -24,6 +25,10 @@ def get_chrome_driver() -> WebDriver:
         options.add_argument("window-size=1920x1080")
         options.add_argument("disable-gpu")
     options.add_experimental_option("detach", DETACH)
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--no-sandbox")
+    options.add_argument(f"--user-agent={UserAgent().random}")
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()), options=options
     )
@@ -102,7 +107,7 @@ def reschedule(driver: WebDriver) -> bool:
     while date_request_tracker.should_retry():
         dates = get_available_dates(driver, date_request_tracker)
         if not dates:
-            print("Error occured when requesting available dates")
+            print("Error : System is busy")
             sleep(DATE_REQUEST_DELAY)
             continue
         earliest_available_date = dates[0]

@@ -1,6 +1,6 @@
 # US Visa Rescheduler for Canada
 
-~~This project is no longer maintained. Please make a PR if you have a fix or want to improve its poor engineering practices.~~
+
 Surprisingly, this project has proven to be more useful than initially thought. I will try to maintain it as long as possible, given my availability and access to test accounts.
 
 A simple Python script for making US visa interview appointments in Canada
@@ -65,10 +65,7 @@ The script can be flaky especially for the `legacy_rescheduler`.  Plans are in p
 
 I have received some reports on potential problems in `legacy_rescheduler`. I need test accounts to understand the problems, if you would like to help please send me an email via the website in my bio.
 
-## Special thanks
-Huge thanks to [@jywyq](https://github.com/jywyq) for adding the Gmail notification feature.
 
-The gmail folder is reusing [gmail-sender](https://github.com/paulc/gmail-sender/tree/master). I'm copying it since it's not published to pip yet.
 
 ## Disclaimer
 
