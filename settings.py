@@ -1,11 +1,12 @@
 # Account Info
-USER_EMAIL = "vaibhavpatel9196@gmail.com"
-USER_PASSWORD = "SaVi@@1703"
-
+USER_EMAIL = "Utpalpanchal.panchal@gmail.com"
+USER_PASSWORD = "Utpal1910@"
+# USER_EMAIL = "vaibhavpatel9196@gmail.com"
+# USER_PASSWORD = "SaVi@@1703"
 # Say you want an appointment no later than Mar 14, 2024
 # Please strictly follow the YYYY-MM-DD format
-EARLIEST_ACCEPTABLE_DATE = "2025-10-24"
-LATEST_ACCEPTABLE_DATE = "2025-10-24"
+EARLIEST_ACCEPTABLE_DATE = "2025-06-15"
+LATEST_ACCEPTABLE_DATE = "2025-06-15"
 
 # The following is only required for the Gmail notification feature
 # Gmail login info
@@ -37,8 +38,10 @@ DATE_REQUEST_DELAY = 30
 DATE_REQUEST_MAX_RETRY = 60
 DATE_REQUEST_MAX_TIME = 30 * 60
 LOGIN_URL = "https://ais.usvisa-info.com/en-ca/niv/users/sign_in"
-# This is hardcoded to the Toronto consulate, might need to change for other consulates
-AVAILABLE_DATE_REQUEST_SUFFIX = "/days/90.json?appointments[expedite]=false"
+ 
+#AVAILABLE_DATE_REQUEST_SUFFIX = "/days/90.json?appointments[expedite]=false" # halifax
+
+AVAILABLE_DATE_REQUEST_SUFFIX = "/days/94.json?appointments[expedite]=false" #torronto
 APPOINTMENT_PAGE_URL = "https://ais.usvisa-info.com/en-ca/niv/schedule/{id}/appointment"
 PAYMENT_PAGE_URL = "https://ais.usvisa-info.com/en-ca/niv/schedule/{id}/payment"
 REQUEST_HEADERS = {

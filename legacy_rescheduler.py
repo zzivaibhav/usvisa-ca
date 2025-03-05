@@ -16,7 +16,9 @@ def legacy_reschedule(driver):
             (By.ID, "appointments_consulate_appointment_facility_id")
         ))
     dropdown.click()
-    halifax_option = dropdown.find_element(By.XPATH, "/html/body/div[4]/main/div[4]/div/div/form/fieldset/ol/fieldset/div/div[2]/div[1]/div/li/select/option[3]")
+    halifax_option = dropdown.find_element(By.XPATH, "/html/body/div[4]/main/div[4]/div/div/form/fieldset/ol/fieldset/div/div[2]/div[1]/div/li/select/option[7]")
+   # halifax_option = dropdown.find_element(By.XPATH, "/html/body/div[4]/main/div[4]/div/div/form/fieldset/ol/fieldset/div/div[2]/div[1]/div/li/select/option[2]")
+
     halifax_option.click()
     date_selection_box = WebDriverWait(driver, 5).until(
         EC.element_to_be_clickable(
@@ -66,6 +68,8 @@ def legacy_reschedule(driver):
     ava_date_btn.click()
 
     # Select time of the date:
+    print("Date selected, trying to pick time...")
+
     sleep(2)
     appointment_time = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.ID, "appointments_consulate_appointment_time"))
@@ -73,7 +77,7 @@ def legacy_reschedule(driver):
     appointment_time.click()
     appointment_time_options = appointment_time.find_elements(By.TAG_NAME, "option")
     appointment_time_options[len(appointment_time_options) - 1].click()
-
+    print("Time selected, trying to reschedule...")
     # Click "Reschedule"
     driver.find_element(
         By.XPATH,
@@ -81,8 +85,9 @@ def legacy_reschedule(driver):
     ).click()
     try:
         confirm = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "/html/body/div[6]/div/div/a[2]"))
+            EC.presence_of_element_located((By.XPATH, "/html/body/div[4]/main/div[4]/div/div/form/div[2]/fieldset/ol/li/input"))
         )
+
     finally:
         driver.implicitly_wait(0.1)
         if not TEST_MODE:
