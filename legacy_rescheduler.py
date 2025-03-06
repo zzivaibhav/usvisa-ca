@@ -121,11 +121,25 @@ def legacy_reschedule(driver):
       
         if confirm.is_enabled() and not TEST_MODE:
             confirm.click()
-         
+            print("Rescheduled successfully!") 
+        elif TEST_MODE:
+            print("TEST_MODE is enabled.")
         else:
-            print("Confirmation element not found or TEST_MODE is enabled.")
+            print("Confirmation element not found ")
 
-
+#click on the confirm
+    try:
+     confirm = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, "/html/body/div[6]/div/div/a[2]"))
+        )
+     print("Confirm button found.")
+    except Exception as e:
+        print(f"Failed to find confirmation element: {e}")
+        return False
+    finally:
+        driver.implicitly_wait(0.1)
+        if not TEST_MODE:
+            confirm.click()
     # driver.find_element(
     #      By.ID, "appointments_submit"
     # ).click()

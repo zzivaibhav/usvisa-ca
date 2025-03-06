@@ -12,7 +12,7 @@ LATEST_ACCEPTABLE_DATE = "2025-06-15"
 # Gmail login info
 GMAIL_SENDER_NAME = "vaibhav patel"
 GMAIL_EMAIL = "handyshare4@gmail.com"
-GMAIL_APPLICATION_PWD = "handyshare@ADMIN@123"
+GMAIL_APPLICATION_PWD = "kywbbqtaldsigaij"
 
 # Email notification receiver info
 RECEIVER_NAME = "vaibhavpatel162002@gmail.com"

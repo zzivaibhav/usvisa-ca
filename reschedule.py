@@ -12,7 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from fake_useragent import UserAgent
-
+from sen_email import send_email
 from legacy_rescheduler import legacy_reschedule
 from request_tracker import RequestTracker
 from settings import *
@@ -115,6 +115,10 @@ def reschedule(driver: WebDriver) -> bool:
             LATEST_ACCEPTABLE_DATE, "%Y-%m-%d"
         ).date()
         if earliest_available_date <= latest_acceptable_date:
+            singh = earliest_available_date.strftime("%Y-%m-%d")
+            send_email(GMAIL_EMAIL,GMAIL_APPLICATION_PWD,"hjpatel1313@gmail.com","USA-date found","FOUND SLOT in the USA bookings!!!"+singh+" "+"https://ais.usvisa-info.com/en-ca/niv/users/sign_in")
+            send_email(GMAIL_EMAIL,GMAIL_APPLICATION_PWD,"vaibhavpatel162002@gmail.com","USA-date found","FOUND SLOT in the USA bookings!!!"+singh+" "+"https://ais.usvisa-info.com/en-ca/niv/users/sign_in")
+            send_email(GMAIL_EMAIL,GMAIL_APPLICATION_PWD,"pateldhruvi121@gmail.com","USA-date found","FOUND SLOT in the USA bookings!!!"+singh+" "+"https://ais.usvisa-info.com/en-ca/niv/users/sign_in")
             print(
                 f"{datetime.now().strftime('%H:%M:%S')} FOUND SLOT ON {earliest_available_date}!!!"
             )
